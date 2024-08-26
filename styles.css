@@ -58,7 +58,7 @@ body {
   align-items: center;
   margin-top: 20px;
   opacity: 0; /* Ensures the prompt remains invisible even if display is set to flex */
-  animation: fadeInPrompt 1.5s forwards; /* Animation to fade in */
+  animation: fadeInPrompt 0.25s forwards; /* Animation to fade in */
 }
 
 @keyframes fadeInPrompt {
