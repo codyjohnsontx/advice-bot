@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+body {
+  background-color: #0f0e0e;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.line {
+  visibility: hidden;
+}
+
+.crt {
+  width: 80%;
+  max-width: 800px;
+  aspect-ratio: 4 / 3;
+  border: 10px solid #1bff80;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(27, 255, 128, 1);
+  position: relative;
+  background: #0f0e0e;
+}
+
+.crt-screen {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "VT323", Courier, monospace;
+  color: rgba(27, 255, 128, 1);
+  background: #0f0e0e;
+  text-shadow: 0px 0px 10px rgba(27, 255, 128, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-text .line {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.crt-input {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.crt-input .prompt {
+  margin-right: 10px;
+  font-family: "VT323", Courier, monospace;
+  color: rgba(27, 255, 128, 1);
+  text-shadow: 0px 0px 10px rgba(27, 255, 128, 1);
+}
+
+#crt-input:disabled {
+  color: rgba(27, 255, 128, 0.5); /* Dim color when input is disabled */
+}
+
+#crt-input {
+  background: transparent;
+  border: none;
+  color: rgba(27, 255, 128, 1);
+  font-family: "VT323", Courier, monospace;
+  text-shadow: 0px 0px 10px rgba(27, 255, 128, 1);
+  outline: 2px solid rgba(27, 255, 128, 0.7);
+  outline-offset: 2px;
+  caret-color: rgba(27, 255, 128, 1);
+  width: 90%;
+}
+
+.crt-scanline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0.5px;
+  background: rgba(27, 255, 128, 1);
+  opacity: 0.4;
+  z-index: 10;
+  animation: scanline 3.5s linear infinite alternate;
+  animation-delay: 0.25s;
+}
+
+@keyframes scanline {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
