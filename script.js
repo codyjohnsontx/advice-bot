@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("crt-input");
   const crtText = document.querySelector(".crt-text");
+  const crtInputArea = document.querySelector(".crt-input");
   const lines = document.querySelectorAll(".line");
 
   let currentLineIndex = 0;
 
   function typeLine(line) {
     let text = line.textContent;
-    line.textContent = ""; // Clear the line initially
-    line.style.visibility = "visible"; // Make the line visible once typing starts
-
+    line.textContent = ""; // Clears the line initially
+    line.style.visibility = "visible"; // Once typing starts, line becomes visible
     let index = 0;
 
     function typeChar() {
@@ -17,19 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
         line.textContent += text.charAt(index);
         index++;
 
-        const minDelay = 10;
-        const maxDelay = 100;
-        const randomDelay = Math.floor(
-          Math.random() * (maxDelay - minDelay + 1) + minDelay
-        );
+        // Randomize the typing delay
+        const minDelay = 10; // Min delay in ms
+        const maxDelay = 100; // Max delay in ms
+        const randomDelay =
+          Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
 
-        setTimeout(typeChar, randomDelay); // Adjust speed here (milliseconds)
+        setTimeout(typeChar, randomDelay);
       } else {
         currentLineIndex++;
         if (currentLineIndex < lines.length) {
-          setTimeout(() => typeLine(lines[currentLineIndex]), 500); // Delay before next line
+          setTimeout(() => typeLine(lines[currentLineIndex]), 250); // ms delay before next line typed
         } else {
-          enableInput(); // Enable input after typing is complete
+          setTimeout(showPrompt, 500); // Show the user prompt once typing is complete
         }
       }
     }
@@ -37,9 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
     typeChar();
   }
 
-  function enableInput() {
-    inputField.disabled = false;
-    inputField.focus();
+  function showPrompt() {
+    crtInputArea.style.display = "flex"; // Change from none to flex to make it visible
+    setTimeout(() => {
+      crtInputArea.style.opacity = 1; // Trigger the fade-in animation
+      inputField.disabled = false; // Enable the input field after fade-in
+      inputField.focus(); // Focus on the input field
+    }, 50); // Small delay to ensure display change before opacity
   }
 
   function initializeTerminal() {
@@ -54,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const newLine = document.createElement("span");
         newLine.className = "line";
         newLine.textContent = `> ${userInput}`;
+        newLine.style.visibility = "visible"; // Ensure the new line is visible
         crtText.appendChild(newLine);
         crtText.appendChild(document.createElement("br"));
         inputField.value = ""; // Clear the input field
@@ -106,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     responseLine.className = "line";
     responseLine.textContent = text;
     responseLine.style.visibility = "visible"; // Ensure the response is visible
-
     crtText.appendChild(responseLine);
     crtText.appendChild(document.createElement("br"));
   }
