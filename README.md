@@ -16,6 +16,6 @@ A web-based simulation of the Pip Boy terminal inspired by the Fallout game univ
 ## Technologies and APIs Used
 
 - **HTML**: The structure of the terminal is created using semantic HTML elements.
-- **CSS**: Styles are written in CSS to emulate the look of an old CRT screen, including custom animations for text and prompt effects.
+- **CSS**: written in plain CSS to emulate the look of an old CRT screen, including custom animations for text and prompt effects.
 - **Vanilla JavaScript**: Handles the typewriter effect, command parsing, and dynamic text display. It also controls the fetching of advice from the API.
 - **Advice Slip API**: Fetches random advice to display on the terminal. The API provides a collection of useful and fun advice slips to enhance user interaction.
