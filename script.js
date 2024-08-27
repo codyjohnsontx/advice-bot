@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentLineIndex = 0;
 
+  // const adviceArray = [
+  //   "If your code isn’t working, it’s probably because it’s tired. Give it a rest!",
+  // ];
+
   function typeLine(line) {
     let text = line.textContent;
     line.textContent = ""; // Clears the line initially

@@ -64,9 +64,11 @@ body {
 @keyframes fadeInPrompt {
   0% {
     opacity: 0;
+    transform: translateX(-200px); /* Start slightly to the left */
   }
   100% {
     opacity: 1;
+    transform: translateX(0); /* End at the original position */
   }
 }
 
